@@ -7,5 +7,15 @@ pipeline {
                 sh 'mvn initialize'
             }
         }
+        stage ('Building the app 119 ...'){
+            steps {
+                sh 'mvn package'
+            }
+        }
+        stage ('Running Regression tests ...'){
+            steps {
+                sh 'mvn test'
+            }
+        }
     }
 }
