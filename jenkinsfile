@@ -20,6 +20,7 @@ pipeline {
         }
         stage ('Execute ansible playbook'){
             steps {
+                sh 'pwd'
                 ansiblePlaybook credentialsId: 'user-pass', installation: 'ansible', inventory: 'inventory.yml', playbook: 'JavaCalc-play.yaml'
             }
         }
