@@ -15,13 +15,11 @@ pipeline {
         stage ('Running Regression tests ...'){
             steps {
                 sh 'mvn test'
-                sh 'ls'
             }
         }
         stage ('Execute ansible playbook'){
             steps {
-                sh 'pwd'
-                ansiblePlaybook credentialsId: 'user-pass', installation: 'ansible', inventory: 'inventory.yml', playbook: 'JavaCalc-play.yaml'
+                ansiblePlaybook credentialsId: 'user-pass', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory.yml', playbook: 'JavaCalc-play.yaml'
             }
         }
     }
