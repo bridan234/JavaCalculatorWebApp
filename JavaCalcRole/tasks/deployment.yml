@@ -1,11 +1,11 @@
 ---
-- name: Configure Tomcat and Deploy application to target servers
+  - name: Configure Tomcat and Deploy application to target servers
   hosts: all
   become: true
 
-- tasks:  
+  - tasks:  
     - name: deploying the new WAR-file to target {{ansible_hostname}}
-    copy:
+      copy:
       src: /var/lib/jenkins/workspace/jenkins-job/target/webapp-0.2.war
       dest: /home/ubuntu/tomcat/webapps
       mode: 0755
