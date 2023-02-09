@@ -17,5 +17,10 @@ pipeline {
                 sh 'mvn test'
             }
         }
+        stage ('Execute ansible playbook'){
+            steps {
+                ansiblePlaybook become: true, credentialsId: 'user-pass', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory.yml', playbook: 'JavaCalc-play.yaml'
+            }
+        }
     }
 }
