@@ -19,7 +19,7 @@ pipeline {
         }
         stage ('Execute ansible playbook'){
             steps {
-                ansiblePlaybook credentialsId: 'user-pass', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory.yml', playbook: 'JavaCalc-play.yaml'
+                ansiblePlaybook become: true, credentialsId: 'key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory.yml', playbook: 'JavaCalc-play.yaml'
             }
         }
     }
