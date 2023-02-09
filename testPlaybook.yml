@@ -1,0 +1,11 @@
+---
+- name: test jobs
+  hosts: all
+  become: true
+
+  - tasks:
+    - name:  ping all servers
+      ping:
+        data: pong
+
+...
