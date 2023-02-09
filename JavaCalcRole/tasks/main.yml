@@ -1,0 +1,9 @@
+---
+#tasks todo
+#- import_tasks: stopServer.yml
+#- import_tasks: uninstallApp.yml
+- import_tasks: installations.yml
+- import_tasks: configurations.yml
+- import_tasks: deployment.yml
+
+...

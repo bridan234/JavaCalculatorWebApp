@@ -1,0 +1,24 @@
+---
+
+ubuntu-servers:
+  hosts:
+    ub01:
+      ansible_host: 20.106.176.42
+      ansible_port: 22
+      ansible_user: azureuser
+      ansible_ssh_private_key_file: /home/azureuser/.ssh/key.pem
+    ub02:
+      ansible_host: 20.106.176.74
+      ansible_ssh_private_key_file: /home/azureuser/.ssh/key.pem
+      ansible_user: azureuser
+
+centOS-servers:
+  hosts:
+    cent01:
+      ansible_host: 20.220.16.163
+      ansible_user: azureuser
+      ansible_ssh_private_key_file: /home/azureuser/.ssh/key.pem
+    cent02:
+      ansible_host: 20.220.16.191
+      ansible_ssh_private_key_file: /home/azureuser/.ssh/key.pem
+      ansible_user: azureuser

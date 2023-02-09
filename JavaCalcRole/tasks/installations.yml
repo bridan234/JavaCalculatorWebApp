@@ -1,0 +1,45 @@
+---
+- name: Install Apache Tomcat10 using ansible
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Update the System Packages
+      apt:
+        upgrade: yes
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Update Yum package for ubuntu
+      yum:  
+        upgrade: yes
+        update_cache: yes
+      when: ansible_distribution == "centos"
+
+    - name: Install JAVA in CENTOS
+      yum:
+        name: default-jdk
+        state: present
+      when: ansible_distribution == "centos"
+
+    - name: Stop service httpd, if started
+      service:
+      name: tomcat
+      state: stopped
+
+    - name: Create a Tomcat Directory
+      file:
+        path: /opt/tomcat10
+        owner: tomcat
+        group: tomcat
+        mode: 755
+        recurse: yes
+
+    - name: download & unarchive tomcat10
+      unarchive:
+        src: https://mirrors.estointernet.in/apache/tomcat/tomcat-10/v10.0.21/bin/apache-tomcat-10.0.21.tar.gz
+        dest: /opt/tomcat10
+        remote_src: yes
+        extra_opts: [--strip-components=1]
+
+...

@@ -1,0 +1,17 @@
+---
+- name: Configure Tomcat and Deploy application to target servers
+  hosts: all
+  become: true
+
+- tasks:  
+    - name: deploying the new WAR-file to target {{ansible_hostname}}
+    copy:
+      src: /var/lib/jenkins/workspace/jenkins-job/target/webapp-0.2.war
+      dest: /home/ubuntu/tomcat/webapps
+      mode: 0755
+
+    - name: Start and Enable Tomcat 10 on {{ansible_hostname}}
+      systemd:
+        name: tomcat
+        state: started
+        daemon_reload: true
