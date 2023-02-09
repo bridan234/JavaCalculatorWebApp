@@ -22,16 +22,17 @@
       state: present
     when: ansible_distribution == "centos"
 
-  # - name: Stop service httpd, if started
-  #   service:
-  #     name: tomcat
-  #     state: stopped
   - name: Install JAVA in UBUNTU 
     apt:
       name: default-jdk
       state: present
     when: ansible_distribution == "Ubuntu"
-    
+  
+  # - name: Stop service httpd, if started
+  #   service:
+  #     name: tomcat
+  #     state: stopped
+
   - name: Create a Tomcat User
     user:
       name: tomcat
@@ -39,6 +40,14 @@
   - name: Create a Tomcat Group
     group:
       name: tomcat
+
+  - name: Create a Tomcat Directory
+    file:
+      path: /opt/tomcat10
+      owner: tomcat
+      group: tomcat
+      mode: 755
+      recurse: yes
 
   - name: Change ownership of tomcat directory
     file:
@@ -48,14 +57,6 @@
       mode: "u+rwx,g+rx,o=rx"
       recurse: yes
       state: directory
-
-  - name: Create a Tomcat Directory
-    file:
-      path: /opt/tomcat10
-      owner: tomcat
-      group: tomcat
-      mode: 755
-      recurse: yes
 
   - name: download & unarchive tomcat10
     unarchive:
