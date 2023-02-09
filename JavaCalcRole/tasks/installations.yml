@@ -22,10 +22,10 @@
       state: present
     when: ansible_distribution == "centos"
 
-  - name: Stop service httpd, if started
-    service:
-      name: tomcat
-      state: stopped
+  # - name: Stop service httpd, if started
+  #   service:
+  #     name: tomcat
+  #     state: stopped
 
   - name: Create a Tomcat Directory
     file:
