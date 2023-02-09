@@ -6,7 +6,7 @@
   # - tasks:  
   - name: deploying the new WAR-file to target #{{ansible_hostname}}
     copy:
-      src: /var/lib/jenkins/workspace/jenkins-job/target/webapp-0.2.war
+      src: /var/lib/jenkins/workspace/JavaCalculatorWebApp/target/webapp-0.2.war
       dest: /home/ubuntu/tomcat/webapps
       mode: 0755
 
