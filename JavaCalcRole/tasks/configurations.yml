@@ -4,29 +4,6 @@
   #   become: true
 
   #   tasks:
-  - name: Create a Tomcat User
-    user:
-      name: tomcat
-
-  - name: Create a Tomcat Group
-    group:
-      name: tomcat
-
-  - name: Install JAVA in UBUNTU 
-    apt:
-      name: default-jdk
-      state: present
-    when: ansible_distribution == "Ubuntu"
-
-  - name: Change ownership of tomcat directory
-    file:
-      path: /opt/tomcat10
-      owner: tomcat
-      group: tomcat
-      mode: "u+rwx,g+rx,o=rx"
-      recurse: yes
-      state: directory
-
   - name: Copy Tomcat service from local to remote
     copy:
       src: /etc/tomcat.service
