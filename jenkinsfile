@@ -9,7 +9,7 @@ pipeline {
         }
         stage ('Building the app 119 ...'){
             steps {
-                sh 'mvn package'
+                sh 'mvn clean package'
             }
         }
         stage ('Running Regression tests ...'){
