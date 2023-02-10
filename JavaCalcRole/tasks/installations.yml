@@ -4,7 +4,7 @@
   #   become: true
 
   #   tasks:
-  - name: Update the System Packages
+  - name: Update the System Packages for Ubuntu
     apt:
       upgrade: yes
       update_cache: yes
@@ -12,14 +12,13 @@
 
   - name: Update Yum package for CentOS
     yum:  
-      upgrade: yes
-      update_cache: yes
+      update_cache: true
     when: ansible_distribution == "CentOS"
 
   - name: Install JAVA in CENTOS
     yum:
       name: default-jdk
-      state: present
+      state: latest
     when: ansible_distribution == "CentOS"
 
   - name: Install JAVA in UBUNTU 
