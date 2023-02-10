@@ -21,6 +21,7 @@ pipeline {
         }
         stage ('Execute ansible playbook'){
             steps {
+                sh 'whoami'
                 ansiblePlaybook become: true, disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory.yml', playbook: 'pingHosts-playbook.yml'
             }
         }
