@@ -4,7 +4,7 @@
   - name:  ping all servers
     ping:
 
-    - name: Remove Tomcat10 from centos
+  - name: Remove Tomcat10 from centos
     file:
       path: /opt/tomcat10
       state: absent
