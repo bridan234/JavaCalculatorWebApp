@@ -22,6 +22,7 @@ pipeline {
         stage ('Execute ansible playbook'){
             steps {
                 sh 'whoami'
+                sh 'ls /home/azureuser/'
                 sh 'ls /home/azureuser/.ssh'
                 ansiblePlaybook disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory.yml', playbook: 'pingHosts-playbook.yml'
             }
