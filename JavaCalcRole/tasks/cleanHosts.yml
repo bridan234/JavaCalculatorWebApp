@@ -1,0 +1,31 @@
+---
+#Make sure server is availabe and service is not running
+
+  - name:  ping all servers
+    ping:
+      data: crash
+      
+  # - name: Stop service httpd, if started
+  #   service:
+  #     name: tomcat
+  #     state: stopped
+
+  - name: Stop Tomcat
+    command: sh /opt/tomcat10/bin/shutdown.sh
+    become: true
+    #become_user: tomcat
+
+  - name: Remove Tomcat
+    file:
+      path: /opt/tomcat10
+      state: absent
+
+  - name: remove user "tomcat"
+    user:
+      name: tomcat
+      state: absent
+
+  - name: remove group "tomcat"
+    group:
+      name: tomcat
+      state: absent

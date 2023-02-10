@@ -7,10 +7,10 @@
   - name: deploying the new WAR-file to target {{ansible_hostname}}
     copy:
       src: /var/lib/jenkins/workspace/JavaCalculatorWebApp/target/webapp-0.2.war
-      dest: /opt/tomcat10/webapps
+      dest: /opt/tomcat8/webapps
       mode: 0755
 
-  - name: Start and Enable Tomcat 10 on {{ansible_hostname}}
+  - name: Start and Enable Tomcat 8 on {{ansible_hostname}}
     systemd:
       name: tomcat
       state: started
