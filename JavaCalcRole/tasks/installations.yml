@@ -47,17 +47,8 @@
       owner: tomcat
       group: tomcat
       state:  directory
-      # mode: 755
-      # recurse: yes
-
-  # - name: Change ownership of tomcat directory
-  #   file:
-  #     path: /opt/tomcat10
-  #     owner: tomcat
-  #     group: tomcat
-  #     mode: "u+rwX,g+rX,o=rX"
-  #     recurse: yes
-  #     state: directory
+      mode: 755
+      recurse: yes
 
   - name: download & unarchive tomcat10
     unarchive:
@@ -65,5 +56,15 @@
       dest: /opt/tomcat10
       remote_src: yes
       extra_opts: [--strip-components=1]
+
+  - name: Change ownership of tomcat directory
+    file:
+      path: /opt/tomcat10
+      owner: tomcat
+      group: tomcat
+      # mode: "u+rwX,g+rX,o=rX"
+      mode: 755
+      recurse: yes
+      state: directory
 
 ...
