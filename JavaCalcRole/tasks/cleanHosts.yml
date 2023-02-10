@@ -6,23 +6,15 @@
 
   - name: Do some stuff on centos
     command: sh sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* && sudo sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
-    when: ansible_distribution == "centos"
+    when: ansible_distribution == "CentOS"
 
   - name: Stop Tomcat
     command: sh /opt/tomcat8/bin/shutdown.sh
-    when: ansible_distribution == "ubuntu"
 
   - name: Remove Tomcat
     file:
       path: /opt/tomcat8
       state: absent
-    when: ansible_distribution == "ubuntu"
-
-  - name: Remove Tomcat
-    file:
-      path: /opt/tomcat10
-      state: absent
-    when: ansible_distribution == "centos"
 
   - name: remove user "tomcat"
     user:

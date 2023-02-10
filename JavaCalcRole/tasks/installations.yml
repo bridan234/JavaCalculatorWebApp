@@ -8,19 +8,19 @@
     apt:
       upgrade: yes
       update_cache: yes
-    when: ansible_distribution == "ubuntu"
+    when: ansible_distribution == "Ubuntu"
 
-  - name: Update Yum package for ubuntu
+  - name: Update Yum package for CentOS
     yum:  
       upgrade: yes
       update_cache: yes
-    when: ansible_distribution == "centos"
+    when: ansible_distribution == "CentOS"
 
   - name: Install JAVA in CENTOS
     yum:
       name: default-jdk
       state: present
-    when: ansible_distribution == "centos"
+    when: ansible_distribution == "CentOS"
 
   - name: Install JAVA in UBUNTU 
     apt:
