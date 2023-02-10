@@ -21,7 +21,7 @@ pipeline {
         }
         stage ('Execute ansible playbook'){
             steps {
-                ansiblePlaybook become: true, credentialsId: 'key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory.yml', playbook: 'testPlaybook.yml'
+                ansiblePlaybook become: true, credentialsId: 'key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory.yml', playbook: 'pingHosts-Playbook.yml'
             }
         }
     }
