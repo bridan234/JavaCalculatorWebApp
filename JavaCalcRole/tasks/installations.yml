@@ -17,7 +17,7 @@
 
   - name: Install JAVA in CENTOS
     yum:
-      name: default-jdk
+      name: java-11-openjdk
       state: latest
     when: ansible_distribution == "CentOS"
 
