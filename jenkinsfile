@@ -9,22 +9,17 @@ pipeline {
         }
         stage ('Building the app 119 ...'){
             steps {
-                // sh 'mvn clean package'
-                echo 'Debugging'
+                sh 'mvn clean package'
             }
         }
         stage ('Running Regression tests ...'){
             steps {
-                // sh 'mvn test'
-                echo 'debugging'
+                sh 'mvn test'
             }
         }
         stage ('Execute ansible playbook'){
             steps {
-                sh 'whoami'
-                sh 'ls /home/azureuser/'
-                sh 'ls /home/azureuser/.ssh'
-                ansiblePlaybook disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory.yml', playbook: 'pingHosts-playbook.yml'
+                ansiblePlaybook become: true, disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory.yml', playbook: 'JavaCalc-play.yaml'
             }
         }
     }
