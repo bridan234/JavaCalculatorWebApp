@@ -18,5 +18,5 @@
     when: ansible_distribution == "Ubuntu"
 
   - name: Starting up tomcat server on CentOS servers
-    command: sh /opt/tomcat8/bin/startup.sh
+    command: sh /opt/tomcat8/bin/catalina.sh run
     when: ansible_distribution == "CentOS"
