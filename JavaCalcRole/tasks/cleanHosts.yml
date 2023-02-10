@@ -3,7 +3,6 @@
 
   - name:  ping all servers
     ping:
-      data: crash
       
   # - name: Stop service httpd, if started
   #   service:
