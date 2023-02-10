@@ -6,6 +6,5 @@
   tasks:
   - name:  ping all servers
     ping:
-      data: pong
 
 ...
