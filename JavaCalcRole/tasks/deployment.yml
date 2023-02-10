@@ -8,7 +8,7 @@
     copy:
       src: /var/lib/jenkins/workspace/JavaCalculatorWebApp/target/webapp-0.2.war
       dest: /opt/tomcat10/webapps
-      # mode: 0755
+      mode: 0755
 
   - name: Start and Enable Tomcat 10 on {{ansible_hostname}}
     systemd:
