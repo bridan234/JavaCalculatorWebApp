@@ -4,18 +4,9 @@
   - name:  ping all servers
     ping:
 
-  - name: Remove Tomcat10 from centos
-    file:
-      path: /opt/tomcat10
-      state: absent
-    when: ansible_distribution == "CentOS"
-
-  - name: Do some stuff on centos
-    command: "sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* && sudo sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*"
-    when: ansible_distribution == "CentOS"
-
   - name: Stop Tomcat
     command: sh /opt/tomcat8/bin/shutdown.sh
+    when: ansible_distribution == "Ubuntu"
 
   - name: Remove Tomcat
     file:
