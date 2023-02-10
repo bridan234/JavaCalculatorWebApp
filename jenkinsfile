@@ -10,11 +10,13 @@ pipeline {
         stage ('Building the app 119 ...'){
             steps {
                 // sh 'mvn clean package'
+                echo 'Debugging'
             }
         }
         stage ('Running Regression tests ...'){
             steps {
                 // sh 'mvn test'
+                echo 'debugging'
             }
         }
         stage ('Execute ansible playbook'){
