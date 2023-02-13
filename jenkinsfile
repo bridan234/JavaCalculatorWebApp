@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Initializing Maven') {
             steps {
+                sh '/home/azureuser/.ssh'
                 sh 'mvn initialize'
             }
         }
