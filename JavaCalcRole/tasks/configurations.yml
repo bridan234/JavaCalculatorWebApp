@@ -4,9 +4,17 @@
   #   become: true
 
   #   tasks:
-  - name: Copy Tomcat service from local to remote
+  - name: Copy Tomcat service from local to remote [CentOS servers]
     copy:
       src: templates/tomcat.service.j2
+      dest: /etc/systemd/system/centos.tomcat.service
+      mode: 0755  
+    when: ansible_distribution == "CentOS"
+      
+  - name: Copy Tomcat service from local to remote [Ubuntu servers]
+    copy:
+      src: templates/ubuntu.tomcat.service.j2
       dest: /etc/systemd/system/tomcat.service
       mode: 0755
+    when: ansible_distribution == "Ubuntu"
 
