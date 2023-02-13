@@ -4,8 +4,6 @@ pipeline {
     stages {
         stage('Initializing Maven') {
             steps {
-                sh 'ls /home/azureuser'
-                sh 'ls /home/azureuser/.ssh'
                 sh 'mvn initialize'
             }
         }
@@ -21,7 +19,6 @@ pipeline {
         }
         stage ('Execute ansible playbook'){
             steps {
-                sh '/home/azureuser/.ssh'
                 ansiblePlaybook become: true, disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory.yml', playbook: 'JavaCalc-play.yaml'
             }
         }
