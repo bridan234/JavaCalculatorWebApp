@@ -4,7 +4,7 @@
   - name:  ping all servers
     ping:
 
-  - name: Stop Tomcat
+  - name: Stop Tomcat 2
     command: sh /opt/tomcat8/bin/shutdown.sh
     # when: ansible_distribution == "Ubuntu"
 
