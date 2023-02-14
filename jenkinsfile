@@ -14,7 +14,7 @@ pipeline {
         }
         stage ('Running Regression tests ...'){
             steps {
-                sh 'mvn test'
+                 sh 'mvn test'
             }
         }
         stage ('Execute ansible playbook'){
